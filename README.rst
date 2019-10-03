@@ -1,6 +1,3 @@
 =====================================
-scCloud WDL workflows and Dockerfiles
+Project has moved to `Cumulus <https://github.com/klarman-cell-observatory/cumulus>`__
 =====================================
-
-
-`Read documentation <http://sccloud.readthedocs.io>`__
