@@ -1,3 +1,10 @@
+Version 0.9.0 `September 18, 2019`
+----------------------------------
+
+API change.
+
+scCloud accepts both sample sheet and single file input.
+
 Version 0.7.0 `Feburary 14, 2019`
 ---------------------------------
 

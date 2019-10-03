@@ -953,22 +953,20 @@ scCloud_subcluster's outputs
 
 ---------------------------------
 
-Load ``scCloud`` results into ``Seurat``  
+Load scCloud results into Seurat  
 -----------------------------------------
 
-First, you need to set ``make_output_seurat_compatible`` to ``true`` in ``scCloud`` to make sure ``output_name.h5ad`` is Seurat-compatible.
+First, you need to set ``output_seurat_compatible`` to ``true`` in ``scCloud`` to generate a Seurat-compatible output file ``output_name.seurat.h5ad``, in addition to the normal result ``output_name.h5ad``.
 Please note that python, the `anndata`_ python library with version at least ``0.6.22.post1``, and the reticulate R library are required to load the result into Seurat.
 
-Execute the R code below to load the results into ``Seurat`` version 2::
+Execute the R code below to load the results into ``Seurat`` (working with both Seurat v2 and v3)::
 
-	library(Seurat)
-	library(reticulate)
 	source("https://raw.githubusercontent.com/klarman-cell-observatory/scCloud/master/workflows/scCloud/h5ad2seurat.R")
 	ad <- import("anndata", convert = FALSE)
 	test_ad <- ad$read_h5ad("output_name.seurat.h5ad")
-	test <- Convert.anndata.base.AnnData(test_ad, to = "seurat")
+	result <- convert_h5ad_to_seurat(test_ad)
 
-The resulting seurat object will have three data slots. *raw.data* records filtered raw count matrix. *data* records filtered and log-normalized expression matrix. *scale.data* records variable-gene-selected, standardized expression matrix that are ready to perform PCA.
+The resulting seurat object ``result`` will have three data slots. *raw.data* records filtered raw count matrix. *data* records filtered and log-normalized expression matrix. *scale.data* records variable-gene-selected, standardized expression matrix that are ready to perform PCA.
 
 ---------------------------------
 
